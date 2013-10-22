@@ -1,43 +1,27 @@
-package recfun
+// // package recfun
 
-import org.specs2.mutable._
-import org.specs2.runner._
-import org.junit.runner._
+// import org.scalatest.FunSuite
 
-import play.api.mvc.SimpleResult
-import play.api.test._
-import play.api.test.Helpers._
+// import org.junit.runner.RunWith
+// import org.scalatest.junit.JUnitRunner
 
-import scala.concurrent.Future
+// @RunWith(classOf[JUnitRunner])
+// class BalanceSuite extends FunSuite {
+//   import Main.balance
 
-class BalanceSpec extends Specification {
+//   test("balance: '(if (zero? x) max (/ 1 x))' is balanced") {
+//     assert(balance("(if (zero? x) max (/ 1 x))".toList))
+//   }
 
-  import Main.balance
+//   test("balance: 'I told him ...' is balanced") {
+//     assert(balance("I told him (that it's not (yet) done).\n(But he wasn't listening)".toList))
+//   }
 
-  "RecFun's balance" should {
+//   test("balance: ':-)' is unbalanced") {
+//     assert(!balance(":-)".toList))
+//   }
 
-    "'(if (zero? x) max (/ 1 x))' is balanced" in new WithApplication {
-
-      balance("(if (zero? x) max (/ 1 x))".toList) mustEqual true
-
-    }.pendingUntilFixed("| Not Yet Implemented")
-
-    "'I told him ...' is balanced" in new WithApplication {
-
-      balance("I told him (that it's not (yet) done).\n(But he wasn't listening)".toList) mustEqual true
-
-    }.pendingUntilFixed("| Not Yet Implemented")
-
-    "':-)' is unbalanced" in new WithApplication {
-
-      balance(":-)".toList) mustEqual false
-
-    }.pendingUntilFixed("| Not Yet Implemented")
-
-    "counting is not enough" in new WithApplication {
-
-      balance("())(".toList) mustEqual false
-
-    }.pendingUntilFixed("| Not Yet Implemented")
-  }
-}
+//   test("balance: counting is not enough") {
+//     assert(!balance("())(".toList))
+//   }
+// }

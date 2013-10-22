@@ -1,37 +1,22 @@
 package recfun
 
-import org.specs2.mutable._
-import org.specs2.runner._
-import org.junit.runner._
+import org.scalatest.FunSuite
 
-import play.api.mvc.SimpleResult
-import play.api.test._
-import play.api.test.Helpers._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-import scala.concurrent.Future
+@RunWith(classOf[JUnitRunner])
+class PascalSuite extends FunSuite {
+  import Main.pascal
+  test("pascal: col=0,row=2") {
+    assert(pascal(0,2) === 1)
+  }
 
-class PascalSpec extends Specification {
+  test("pascal: col=1,row=2") {
+    assert(pascal(1,2) === 2)
+  }
 
-  import Main._
-
-  "RecFun's Pascal function" should {
-
-    "given 0 columns and 2 rows, return 1" in new WithApplication{
-
-      pascal(0,2) mustEqual 1
-
-    }.pendingUntilFixed("| Not Yet Implemented")
-
-    "given 1 columns and 2 rows, return 2" in new WithApplication {
-
-      pascal(1,2) mustEqual 2
-
-    }.pendingUntilFixed("| Not Yet Implemented")
-
-    "given 1 columns and 3 rows, return 3" in new WithApplication {
-
-      pascal(1,3) mustEqual 3
-
-    }.pendingUntilFixed("| Not Yet Implemented")
+  test("pascal: col=1,row=3") {
+    assert(pascal(1,3) === 3)
   }
 }
