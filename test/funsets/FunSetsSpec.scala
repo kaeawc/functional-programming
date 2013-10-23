@@ -50,7 +50,4 @@ class FunSetsSpec extends Specification {
       }
     }.pendingUntilFixed("| Not Yet Implemented")
   }
-
-
-  
 }
