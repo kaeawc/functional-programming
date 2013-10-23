@@ -24,35 +24,22 @@ object Main {
    */
   def balance(chars: List[Char]): Boolean = {
 
-    val open = chars.indexOf('(')
-    var close = chars.indexOf(')')
 
-    if (open >= 0) {
-      if (open < close) {
+    def findDepth(chars:List[Char],depth:Int = 0):Int = {
 
-        var i = 1
-
-        val depth = chars.slice(open + 1, chars.length) map {
-          char:Char =>
-          char match {
-            case '(' => 1
-            case ')' => -1
-            case _ => 0
-          }
+      if (chars.length > 0) {
+        val current = chars.head match {
+          case '(' => 1
+          case ')' => -1
+          case _ => 0
         }
 
-        if(depth == 0) balance(chars.slice(close + 1,chars.length))
-        else false
-      } else false
-    } else if (close >= 0) {
-      false
-    } else {
-      true
+        if (depth + current < 0) -1
+        else findDepth(chars.slice(1,chars.length),depth + current)
+      } else 0
     }
 
-    //if there is an open
-    //need to find its closing
-    //balance the rest of the string
+    findDepth(chars) == 0
   }
 
   /**
