@@ -46,13 +46,13 @@ object Main {
    * Exercise 3
    */
   def countChange(money: Int, coins: List[Int]): Int = {
-    var change = money
-    var ways:Int = 0
-
-    while(change > 0) {
-      ways = countChange(money, coins)
+    coins.sortWith((a, b) => a < b) match {
+      case Nil => 0
+      case coin :: change => money compare coin match {
+        case 1 => countChange(money, change) + countChange(money - coin, coins)
+        case 0 => 1
+        case -1 => 0
+      }
     }
-
-    ways
   }
 }
